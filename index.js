@@ -1,3 +1,5 @@
+import classStyle from "./utils";
+
 const container = document.querySelector(
   ".grid-container"
 );
@@ -16,20 +18,23 @@ const {
   backgroundColor,
 } = containerStyles;
 
-const styleProp = (name, value) => {
-  return `\u00A0\u00A0${name}: ${value}`;
-};
-
 const styleText = `\
-  .grid-container {
-    ${styleProp("width", width)};
-    ${styleProp("height", height)};
-    ${styleProp("display", display)};
-    ${styleProp(
-      "backgroundColor",
-      backgroundColor
-    )};
-  }\
+  ${classStyle("grid-container", [
+    ["width", width],
+    ["height", height],
+    ["display", display],
+    ["background-color", backgroundColor],
+  ])}
+
+  ${classStyle("grid-item", [
+    ["width", "100px"],
+    ["height", "100px"],
+    ["border", "1px solid black"],
+    ["background-color", "lightgray"],
+    ["display", "flex"],
+    ["justify-content", "center"],
+    ["align-items", "center"],
+  ])}
 `;
 
 controlPanel.innerText = styleText;
